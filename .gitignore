@@ -365,3 +365,4 @@ __queuestorage__
 
 local.settings.json
 node_modules
+.env

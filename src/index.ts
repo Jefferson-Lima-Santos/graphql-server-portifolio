@@ -7,7 +7,6 @@ import APIContextInterface from "./APIContextInterface.js";
 
 const typeDefs = schema;
 
-
 const server = new ApolloServer<APIContextInterface>({
         typeDefs,
         resolvers,

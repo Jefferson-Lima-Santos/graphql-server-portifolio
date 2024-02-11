@@ -1,6 +1,4 @@
-//@ts-ignore
 import {BaseContext} from "@apollo/server";
-//@ts-ignore
 import GitHubAPI from "./dataSources/gitHubAPI.js";
 
 
