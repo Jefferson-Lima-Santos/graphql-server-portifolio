@@ -5,23 +5,29 @@
   "main": "index.js",
   "scripts": {
     "compile": "tsc",
-    "start": "npm run compile && node ./dist/index.js",
-    "start:local": "npm run build",
-    "build": "tsc"
+    "build": "tsc",
+    "start": "npm run build && npm run compile && node ./dist/src/index.js",
+    "prebuild": "npm run codegen",
+    "codegen": "graphql-codegen --config codegen.ts",
+    "start:local": "npm run build"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "module",
   "dependencies": {
     "@apollo/datasource-rest": "^6.2.2",
     "@apollo/server": "^4.10.0",
+    "@graphql-codegen/cli": "^5.0.3",
+    "@graphql-codegen/typescript": "^4.1.2",
+    "@graphql-codegen/typescript-document-nodes": "^4.0.12",
+    "@graphql-codegen/typescript-resolvers": "^4.4.1",
     "dotenv": "^16.4.2",
     "graphql": "^16.8.1",
+    "graphql-middleware": "^6.1.35",
     "graphql-tag": "^2.12.6"
   },
   "devDependencies": {
-    "@types/node": "^20.11.17",
+    "@types/node": "^20.17.9",
     "typescript": "^5.3.3"
   }
 }

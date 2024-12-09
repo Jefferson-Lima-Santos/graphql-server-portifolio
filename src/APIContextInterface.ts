@@ -1,5 +1,5 @@
 import {BaseContext} from "@apollo/server";
-import GitHubAPI from "./dataSources/gitHubAPI.js";
+import GitHubAPI from "./dataSources/gitHubAPI";
 
 
 export interface APIContextInterface extends BaseContext {
