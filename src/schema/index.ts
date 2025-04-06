@@ -1,16 +1,14 @@
 import { resolvers as githubResolvers, typeDef as GitHub } from './github/index';
+import { resolvers as messangerResolvers, typeDef as Messanger } from './messanger/index';
 import { makeExecutableSchema } from '@graphql-tools/schema';
 import { merge } from 'lodash';
 import { applyMiddleware } from 'graphql-middleware';
-import { Resolvers } from '../types';
-
-const resolvers: Resolvers = {};
 
 const executable = makeExecutableSchema({
-  typeDefs: [GitHub],
+  typeDefs: [GitHub, Messanger],
   resolvers: merge(
-    resolvers,
     githubResolvers,
+    messangerResolvers
   ),
 });
 

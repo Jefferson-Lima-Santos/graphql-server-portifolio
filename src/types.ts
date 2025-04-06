@@ -17,9 +17,22 @@ export interface Scalars {
   Float: { input: number; output: number; }
 }
 
+export interface MessageModel {
+  country?: InputMaybe<Scalars['String']['input']>;
+  email?: InputMaybe<Scalars['String']['input']>;
+  message?: InputMaybe<Scalars['String']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+}
+
 export interface Mutation {
   __typename?: 'Mutation';
+  sendMessage?: Maybe<Scalars['String']['output']>;
   updateProject?: Maybe<Scalars['String']['output']>;
+}
+
+
+export interface MutationSendMessageArgs {
+  data?: InputMaybe<MessageModel>;
 }
 
 
@@ -115,6 +128,7 @@ export type DirectiveResolverFn<TResult = {}, TParent = {}, TContext = {}, TArgs
 /** Mapping between all available schema types and the resolvers types */
 export type ResolversTypes = ResolversObject<{
   Boolean: ResolverTypeWrapper<Scalars['Boolean']['output']>;
+  MessageModel: MessageModel;
   Mutation: ResolverTypeWrapper<{}>;
   Query: ResolverTypeWrapper<{}>;
   RepositoryModel: ResolverTypeWrapper<RepositoryModel>;
@@ -124,6 +138,7 @@ export type ResolversTypes = ResolversObject<{
 /** Mapping between all available schema types and the resolvers parents */
 export type ResolversParentTypes = ResolversObject<{
   Boolean: Scalars['Boolean']['output'];
+  MessageModel: MessageModel;
   Mutation: {};
   Query: {};
   RepositoryModel: RepositoryModel;
@@ -131,6 +146,7 @@ export type ResolversParentTypes = ResolversObject<{
 }>;
 
 export type MutationResolvers<ContextType = APIContextInterface, ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']> = ResolversObject<{
+  sendMessage?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType, Partial<MutationSendMessageArgs>>;
   updateProject?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType, Partial<MutationUpdateProjectArgs>>;
 }>;
 
